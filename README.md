@@ -19,6 +19,7 @@ Count the values from the data.
 Do plots like boxplots,countplot,distribution plot,histogram plot.
 # Program:
 ```
+(superstore.csv)
 Developed by:Tharika S
 Reg no:212222230159
 
@@ -54,7 +55,6 @@ sns.histplot(x='Postal Code',data=df)
 ![image](https://github.com/tharikasankar/ODD2023-DataScience-Ex-03/assets/119475507/cc8d3a1f-52ef-41d5-9e6f-6dae99bba1e1)
 # isnull:
 ![image](https://github.com/tharikasankar/ODD2023-DataScience-Ex-03/assets/119475507/23e1abee-8b4b-4441-b0ef-5e1e4d06bc21)
-# Data Types:
 # Value Count:
 ![image](https://github.com/tharikasankar/ODD2023-DataScience-Ex-03/assets/119475507/5de81fac-1dda-4610-9067-df99e3773bf6)
 # Boxplot:
@@ -65,6 +65,36 @@ sns.histplot(x='Postal Code',data=df)
 ![image](https://github.com/tharikasankar/ODD2023-DataScience-Ex-03/assets/119475507/b73cbe3d-6f91-4048-969f-7aad9b99f969)
 # Histplot:
 ![image](https://github.com/tharikasankar/ODD2023-DataScience-Ex-03/assets/119475507/8dc913ca-cc2e-4101-87e5-ef0802d91ddc)
+
+# Program:
+```
+(diabetes.csv)
+
+import pandas as pd
+import seaborn as sns
+import numpy as np
+from scipy import stats
+from google.colab import files
+uploaded=files.upload()
+df=pd.read_csv('diabetes.csv')
+df.head()
+df.describe()
+df.isnull().sum()
+df.info()
+sns.boxplot(x="Glucose",data=df)
+Glucose_q1 = df['Glucose'].quantile(0.25)
+Glucose_q3 = df['Glucose'].quantile(0.75)
+Glucose_IQR = Glucose_q3 - Glucose_q1
+Glucose_low = Glucose_q1 - 1.5 * Glucose_IQR
+Glucose_high = Glucose_q3 + 1.5 * Glucose_IQR
+df=df[((df['Glucose']>=Glucose_low)&(df['Glucose']<=Glucose_high))]
+sns.countplot(x="Glucose",data=df)
+sns.distplot(df['Glucose'])
+sns.histplot(x="Glucose",data=df)
+```
+# Output:
+
+
 # Result:
 Thus we have read the given data and performed the univariate analysis with different types of plots.
 
