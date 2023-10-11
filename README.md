@@ -17,28 +17,22 @@ Mention the datatypes from the data.
 Count the values from the data.
 # Step6:
 Do plots like boxplots,countplot,distribution plot,histogram plot.
-# Program:
+# Program(superstore.csv):
 ```
-(superstore.csv)
 Developed by:Tharika S
 Reg no:212222230159
 
 import pandas as pd
 import numpy as np
 import seaborn as sns
-
 df=pd.read_csv('superstore.csv')
 df
-
 df.head()
 df.info()
 df.describe()
 df.isnull().sum()
-
 df.dtypes
-
 df['Postal Code'].value_counts()
-
 sns.boxplot(x='Postal Code', data=df)
 sns.countplot(x='Postal Code',data=df)
 sns.distplot(df["Postal Code"])
@@ -66,10 +60,43 @@ sns.histplot(x='Postal Code',data=df)
 # Histplot:
 ![image](https://github.com/tharikasankar/ODD2023-DataScience-Ex-03/assets/119475507/8dc913ca-cc2e-4101-87e5-ef0802d91ddc)
 
-# Program:
+# Program(diabetes.csv):
 ```
-(diabetes.csv)
+import pandas as pd
+import seaborn as sns
+import numpy as np
+from scipy import stats
+from google.colab import files
+uploaded=files.upload()
+df=pd.read_csv('diabetes.csv')
+df.head()
+df.describe()
+df.isnull().sum()
+df.info()
+sns.boxplot(x="Glucose",data=df)
+Glucose_q1 = df['Glucose'].quantile(0.25)
+Glucose_q3 = df['Glucose'].quantile(0.75)
+Glucose_IQR = Glucose_q3 - Glucose_q1
+Glucose_low = Glucose_q1 - 1.5 * Glucose_IQR
+Glucose_high = Glucose_q3 + 1.5 * Glucose_IQR
+df=df[((df['Glucose']>=Glucose_low)&(df['Glucose']<=Glucose_high))]
+sns.countplot(x="Glucose",data=df)
+sns.distplot(df['Glucose'])
+sns.histplot(x="Glucose",data=df)
 
+```
+# Output:
+![image](https://github.com/tharikasankar/ODD2023-DataScience-Ex-03/assets/119475507/e45e4ceb-f115-4e5f-818e-5cf874c6f5da)
+![image](https://github.com/tharikasankar/ODD2023-DataScience-Ex-03/assets/119475507/ffc09caa-3cc6-4f05-af72-e4df54d2e74e)
+![image](https://github.com/tharikasankar/ODD2023-DataScience-Ex-03/assets/119475507/7040cc9d-725a-4190-85ca-47f24c4d9f6d)
+![image](https://github.com/tharikasankar/ODD2023-DataScience-Ex-03/assets/119475507/b27451cc-8529-484a-b473-b4af65034510)
+![image](https://github.com/tharikasankar/ODD2023-DataScience-Ex-03/assets/119475507/3fd7d60d-cd8b-4838-9360-4ba04e9f4051)
+![image](https://github.com/tharikasankar/ODD2023-DataScience-Ex-03/assets/119475507/10ea81c7-69d9-4ac2-b50a-bcac6e35c8e6)
+![image](https://github.com/tharikasankar/ODD2023-DataScience-Ex-03/assets/119475507/5c3e31fa-c659-4b49-81e7-e8be8ff3038c)
+![image](https://github.com/tharikasankar/ODD2023-DataScience-Ex-03/assets/119475507/f18e3d44-e0c1-485f-9a96-db361739b018)
+
+# Program(employee.csv):
+```
 import pandas as pd
 import seaborn as sns
 import numpy as np
@@ -93,7 +120,14 @@ sns.distplot(df['Glucose'])
 sns.histplot(x="Glucose",data=df)
 ```
 # Output:
-
+![image](https://github.com/tharikasankar/ODD2023-DataScience-Ex-03/assets/119475507/e87755f5-6039-4c9e-b4da-01bd812a5f02)
+![image](https://github.com/tharikasankar/ODD2023-DataScience-Ex-03/assets/119475507/85ca249b-4ee9-4d9d-b906-0f1826ebc6b6)
+![image](https://github.com/tharikasankar/ODD2023-DataScience-Ex-03/assets/119475507/ed176c96-dbe7-4e97-80d6-bfdefc0d1b28)
+![image](https://github.com/tharikasankar/ODD2023-DataScience-Ex-03/assets/119475507/fda372be-424f-443a-aaea-f055896dc8b8)
+![image](https://github.com/tharikasankar/ODD2023-DataScience-Ex-03/assets/119475507/8a92531e-fa21-474d-8926-54e826356252)
+![image](https://github.com/tharikasankar/ODD2023-DataScience-Ex-03/assets/119475507/180ac0d2-2140-493e-9475-a8cee86ca16a)
+![image](https://github.com/tharikasankar/ODD2023-DataScience-Ex-03/assets/119475507/257a510e-5f96-4c8b-bcc9-2d490c23af99)
+![image](https://github.com/tharikasankar/ODD2023-DataScience-Ex-03/assets/119475507/12ba7467-5490-4f97-bf2a-b515568315bd)
 
 # Result:
 Thus we have read the given data and performed the univariate analysis with different types of plots.
